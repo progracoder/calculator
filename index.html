@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" class="result" value="" readonly>
+    <div>
+      <button type="button" class="clear">C</button>
+      <button type="button" class="back">
+        << /button>
+    </div>
+    <div>
+      <button type="button" class="calc-btn">7</button>
+      <button type="button" class="calc-btn">8</button>
+      <button type="button" class="calc-btn">9</button>
+      <button type="button" class="calc-btn">x</button>
+    </div>
+    <div>
+      <button type="button" class="calc-btn">4</button>
+      <button type="button" class="calc-btn">5</button>
+      <button type="button" class="calc-btn">6</button>
+      <button type="button" class="calc-btn">-</button>
+    </div>
+    <div>
+      <button type="button" class="calc-btn">1</button>
+      <button type="button" class="calc-btn">2</button>
+      <button type="button" class="calc-btn">3</button>
+      <button type="button" class="calc-btn">+</button>
+    </div>
+    <div>
+      <button type="button" class="calc-btn">0</button>
+      <button type="button" class="calc-btn">.</button>
+      <button type="button" class="calc-btn">/</button>
+      <button type="button" class="equal">=</button>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('.calc-btn').on('click', function () {
+      $('.result').val($('.result').val() + $(this).html());
+    })
+
+    $('.equal').on('click', function () {
+      exp = $('.result').val();
+      if (exp.includes('x')) {
+        exp = exp.replace('x', '*');
+      }
+      $('.result').val(eval(exp));
+    })
+
+    $('.clear').on('click', function () {
+      $('.result').val('');
+    })
+
+    $('.back').on('click', function () {
+
+      ex = $('.result').val();
+      $('.result').val(ex.substring(0, ex.length - 1));
+    })
+
+  })
+</script>
+
+</html>
